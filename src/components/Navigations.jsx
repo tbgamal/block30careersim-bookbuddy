@@ -1,1 +1,20 @@
-/* TODO - add your code to create a functional React component that renders a navigation bar for the different views in your single page application. You may consider conditionally rendering some options - for example 'Login' should be available if someone has not logged in yet. */
+import bookLogo from '../assets/books.png'
+import { Link } from 'react-router-dom'
+
+function Navigations () {
+  return (
+    <nav>
+      <h1><img id='logo-image' src={bookLogo}/></h1>
+      <h1>Book Buddy</h1>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/account">MyAccount</Link></li>
+        <li><Link to="/">Logout</Link></li>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/register">Sign up</Link></li>
+      </ul>
+    </nav>
+  )
+}
+
+export default Navigations
