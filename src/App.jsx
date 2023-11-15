@@ -13,13 +13,13 @@ function App() {
 
   return (
     <>
-      <Navigations />
+      <Navigations token={token} setToken= {setToken}/>
 
       <Routes>
         <Route path ='/' element={<Books />} />
         <Route path ='/account' element={<Account />} />
-        <Route path ='/login' element={<Login />} />
-        <Route path ='/register' element={<Register />} />
+        <Route path ='/login' element={<Login token={token} setToken= {setToken}/>} />
+        <Route path ='/register' element={<Register token={token} setToken= {setToken}/>} />
         <Route path ='/details/:id' element={<SingleBook />} />
       </Routes>
     </>

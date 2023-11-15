@@ -7,9 +7,9 @@ import '../index.css'
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register'
 
 
-function Register () {
+function Register ({ token, setToken }) {
 
-  const [token, setToken] = useState('')
+  // const [token, setToken] = useState('')
   const [user, setUser] = useState({})
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
