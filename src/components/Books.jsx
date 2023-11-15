@@ -5,13 +5,14 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
+
 function Books () {
 
   const [ books, setBooks ] = useState ([])
   const navigate = useNavigate()
 
   useEffect(() => {
-
+    fetchBooks()
   }, [])
 
   async function fetchBooks () {
