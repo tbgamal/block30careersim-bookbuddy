@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
 
-function SingleBook () {
+function SingleBook ({ token, setToken, available, setAvailable, returned, setReturned }) {
 
   const [ book, setBook ] = useState ({})
   const { id } = useParams ()
@@ -20,13 +20,39 @@ function SingleBook () {
     try {
       const { data: json } = await axios.get (`${API}/books/${id}`)
       console.log(json)
+      setAvailable(json.book.available)
       setBook(json.book)
+      
 
     }
     catch(err){
       console.error(err.message)
     }
   }
+
+  async function reserve () {
+
+    try {
+      const response = await fetch (`${API}books/${id}`, {
+        method: "PATCH",
+        headers:{
+          "Content-Type" : "application/json",
+          "Authorization" : `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          available: false
+        })        
+      })
+      let json = await response.json()
+      console.log(token)
+      setAvailable(json.book.available)
+    }
+    catch(err) {
+      console.error(err)
+    }
+
+  }
+  
   return(
     <>
       {
@@ -34,9 +60,19 @@ function SingleBook () {
         <div className="details">
           <h2>{book.title}</h2>
           <h3>by {book.author}</h3>
-          <img src={book.coverimage} />
-          <article>{book.description}</article>
-          {/* <div>{book.available}</div> */}
+          <div className="single-book-container">
+            <img src={book.coverimage} />
+            <article>{book.description}</article>
+          </div>
+          {token ? (
+            available ? (
+              <button onClick={reserve}>Checkout</button>
+            ) : (
+              <button className="na-button">Not Available</button>
+            )
+          ) : (
+          <button>Register to Checkout</button>
+        )}
         </div>
         :
         <h2>No book was found with id: "{id}". Try again.</h2>

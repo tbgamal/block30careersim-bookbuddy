@@ -29,9 +29,6 @@ function Login ( {token, setToken} ) {
       console.error(err)
     }
   }
-  
-
-
   return (
     <form onSubmit={handleSubmit}>
         <label>Email:
@@ -43,8 +40,7 @@ function Login ( {token, setToken} ) {
         </label>
         <button>Sign In</button>
       </form>
+  )}
 
-  )
-}
 
 export default Login

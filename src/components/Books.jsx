@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
 
-function Books () {
+function Books ({ token, setToken }) {
 
   const [ books, setBooks ] = useState ([])
   const navigate = useNavigate()
@@ -44,6 +44,7 @@ function Books () {
             <h2>Loading...</h2>
         }
       </ul>
+      
     </>
     
   )
