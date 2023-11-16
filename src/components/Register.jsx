@@ -1,7 +1,7 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 
 import { useState, useEffect } from "react"
-
+import { useNavigate } from "react-router-dom"
 import '../index.css'
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register'
@@ -15,6 +15,9 @@ function Register ({ token, setToken }) {
   const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [successMsg, setSuccessMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -31,12 +34,24 @@ function Register ({ token, setToken }) {
       })
   
       let json = await response.json()
+      let successMessage = "Registration successful!"
+      let failedMessage = "A user with that email already exists"
+
+      setSuccessMsg(json.message)
+      console.log(successMsg)
+
+      if(successMsg === successMessage){
+        navigate('/account')
+      }
+      else {
+        // setErrorMsg("Registration failed")
+      }
   
-      console.log(json)
+      // console.log(json)
       setToken(json.token)
     }
     catch (err){
-      console.error(err)
+      console.error(`error message: ${err}`)
     }
   }
 
@@ -58,6 +73,8 @@ function Register ({ token, setToken }) {
         </label>
         <button>Sign Up</button>
       </form>
+
+      {/* <div className="error-message">{errorMsg}</div> */}
 
       {/* <h1>Welcome {firstname} {lastname}. Please login with the following email in the future {email}</h1> */}
     </>

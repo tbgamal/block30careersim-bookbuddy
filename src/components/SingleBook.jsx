@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
 
@@ -10,6 +11,11 @@ function SingleBook ({ token, setToken, available, setAvailable, returned, setRe
 
   const [ book, setBook ] = useState ({})
   const { id } = useParams ()
+  const navigate = useNavigate()
+
+  function toRegister() {
+    navigate('/login')
+  }
 
   useEffect(() => {
     fetchSingleBook()
@@ -71,7 +77,7 @@ function SingleBook ({ token, setToken, available, setAvailable, returned, setRe
               <button className="na-button">Not Available</button>
             )
           ) : (
-          <button>Register to Checkout</button>
+          <button onClick={toRegister}>Login to Checkout</button>
         )}
         </div>
         :
