@@ -1,6 +1,4 @@
-/* TODO - add your code to create a functional React component that renders a login form */
-
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
 import '../index.css'
 import { useNavigate, Link } from "react-router-dom"
@@ -9,9 +7,6 @@ let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login'
 
 
 function Login ( {token, setToken} ) {
-
-  // const [token, setToken] = useState('')
-  // const [user, setUser] = useState({})
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -30,26 +25,23 @@ function Login ( {token, setToken} ) {
 
       let successMessage = "Login successful!"
 
-
-      console.log(response)
       setSuccessMsg(response.data.message)
-      console.log(successMsg)
       setToken(response.data.token)
-      console.log(token)
+      // console.log(token)
 
       if (successMsg == successMessage){
         navigate('/')
+        // login function works. But somehow I have to click the login button two times to redirect into home page
       }
     }
     catch(err){
       setErrorMsg('user cannot be found')
     }
-
-    
   }
+
   return (
-    <>
-    <form onSubmit={handleSubmit}>
+    <div className="form-container">
+    <form className="login-form" onSubmit={handleSubmit}>
         <label>Email:
           <input  value={email} onChange={(e)=>setEmail(e.target.value)}/>
         </label>
@@ -62,7 +54,7 @@ function Login ( {token, setToken} ) {
       <div className="link"><Link to="/register">Create an account here</Link></div>
 
       <h3 className="error-message">{errorMsg}</h3>
-      </>
+      </div>
   )}
 
 

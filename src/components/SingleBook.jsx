@@ -1,5 +1,3 @@
-/* TODO - add your code to create a functional React component that renders details for a single book. Fetch the book data from the provided API. You may consider conditionally rendering a 'Checkout' button for logged in users. */
-
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
@@ -7,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
 
-function SingleBook ({ token, setToken, available, setAvailable, returned, setReturned }) {
+function SingleBook ({ token, available, setAvailable }) {
 
   const [ book, setBook ] = useState ({})
   const { id } = useParams ()
@@ -68,17 +66,19 @@ function SingleBook ({ token, setToken, available, setAvailable, returned, setRe
           <h3>by {book.author}</h3>
           <div className="single-book-container">
             <img src={book.coverimage} />
-            <article>{book.description}</article>
+            <div className="article-container">
+              <article>{book.description}</article>
+              {token ? (
+                available ? (
+                  <button onClick={reserve}>Checkout</button>
+                ) : (
+                  <button className="na-button">Not Available</button>
+                )
+              ) : (
+              <button onClick={toRegister}>Login to Checkout</button>
+              )}
+            </div>
           </div>
-          {token ? (
-            available ? (
-              <button onClick={reserve}>Checkout</button>
-            ) : (
-              <button className="na-button">Not Available</button>
-            )
-          ) : (
-          <button onClick={toRegister}>Login to Checkout</button>
-        )}
         </div>
         :
         <h2>No book was found with id: "{id}". Try again.</h2>

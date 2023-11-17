@@ -1,5 +1,3 @@
-/* TODO - add your code to create a functional React component that renders a registration form */
-
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import '../index.css'
@@ -7,10 +5,8 @@ import '../index.css'
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register'
 
 
-function Register ({ token, setToken }) {
+function Register ({ setToken }) {
 
-  // const [token, setToken] = useState('')
-  const [user, setUser] = useState({})
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
@@ -42,12 +38,12 @@ function Register ({ token, setToken }) {
 
       if(successMsg === successMessage){
         navigate('/account')
+        // register function works. But somehow I have to click the sign up button two times to redirect into account page
       }
       else {
         // setErrorMsg("Registration failed")
       }
   
-      // console.log(json)
       setToken(json.token)
     }
     catch (err){
@@ -56,8 +52,8 @@ function Register ({ token, setToken }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="signup-form" onSubmit={handleSubmit}>
         <label>First Name:
           <input value={firstname} onChange={(e)=>setFirstname(e.target.value)}/>
         </label>
@@ -73,35 +69,8 @@ function Register ({ token, setToken }) {
         </label>
         <button>Sign Up</button>
       </form>
-
-      {/* <div className="error-message">{errorMsg}</div> */}
-
-      {/* <h1>Welcome {firstname} {lastname}. Please login with the following email in the future {email}</h1> */}
-    </>
+    </div>
   )
   }
-
-  
-
-    
-      // <>
-      //   <form onSubmit={handleSubmit}>
-      //     <label>First Name:
-      //       <input value={firstname} onChange={(e)=>setFirstname(e.target.value)}/>
-      //     </label>
-      //     <label>Last Name:
-      //       <input value={lastname} onChange={(e)=>setLastname(e.target.value)}/>
-      //     </label>
-      //     <label>Email:
-      //       <input value={email} onChange={(e)=>setEmail(e.target.value)}/>
-      //     </label>
-      //     <label>
-      //       Password:
-      //       <input value={password} onChange={(e)=>setPassword(e.target.value)}/>
-      //     </label>
-      //     <button>Sign Up</button>
-      //   </form>
-      // </>
-
 
 export default Register
