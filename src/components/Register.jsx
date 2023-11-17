@@ -31,10 +31,8 @@ function Register ({ setToken }) {
   
       let json = await response.json()
       let successMessage = "Registration successful!"
-      let failedMessage = "A user with that email already exists"
 
       setSuccessMsg(json.message)
-      console.log(successMsg)
 
       if(json.message === successMessage){
         navigate('/account')

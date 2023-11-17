@@ -6,11 +6,10 @@ import { useNavigate, Link } from "react-router-dom"
 let API = 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login'
 
 
-function Login ( {token, setToken} ) {
+function Login ( {setToken} ) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [successMsg, setSuccessMsg] = useState ('')
   const [errorMsg, setErrorMsg] = useState ('')
   const navigate = useNavigate()
 
@@ -25,13 +24,10 @@ function Login ( {token, setToken} ) {
 
       let successMessage = "Login successful!"
 
-      // setSuccessMsg(response.data.message)
       setToken(response.data.token)
-      // console.log(token)
 
       if (response.data.message === successMessage){
         navigate('/')
-        // login function works. But somehow I have to click the login button two times to redirect into home page
       }
     }
     catch(err){

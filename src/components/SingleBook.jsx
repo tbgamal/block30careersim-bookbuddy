@@ -23,7 +23,6 @@ function SingleBook ({ token, available, setAvailable }) {
 
     try {
       const { data: json } = await axios.get (`${API}/books/${id}`)
-      console.log(json)
       setAvailable(json.book.available)
       setBook(json.book)
       
@@ -48,7 +47,6 @@ function SingleBook ({ token, available, setAvailable }) {
         })        
       })
       let json = await response.json()
-      console.log(token)
       setAvailable(json.book.available)
     }
     catch(err) {

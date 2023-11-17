@@ -27,7 +27,7 @@ function App() {
             user={user} setUser={setUser}
             resBooks={resBooks} setResBooks={setResBooks}/>
         } />
-        <Route path ='/login' element={<Login token={token} setToken= {setToken}/>} />
+        <Route path ='/login' element={<Login setToken= {setToken}/>} />
         <Route path ='/register' element={<Register setToken= {setToken}/>} />
         <Route path ='/details/:id' element={
           <SingleBook token={token} available={available} setAvailable={setAvailable}/>

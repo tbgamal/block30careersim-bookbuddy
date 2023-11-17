@@ -16,7 +16,7 @@ function Books () {
 
   async function fetchBooks () {
     try {
-      const { data: response}  = await axios.get (`${API}/books`)
+      const { data: response }  = await axios.get (`${API}/books`)
       setBooks (response.books)
 
     }
