@@ -10,7 +10,7 @@ function Login ( {token, setToken} ) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [successMsg, setSuccessMsg] = useState ('')
+  // const [successMsg, setSuccessMsg] = useState ('')
   const [errorMsg, setErrorMsg] = useState ('')
   const navigate = useNavigate()
 
@@ -25,11 +25,11 @@ function Login ( {token, setToken} ) {
 
       let successMessage = "Login successful!"
 
-      setSuccessMsg(response.data.message)
+      // setSuccessMsg(response.data.message)
       setToken(response.data.token)
       // console.log(token)
 
-      if (successMsg == successMessage){
+      if (response.data.message === successMessage){
         navigate('/')
         // login function works. But somehow I have to click the login button two times to redirect into home page
       }

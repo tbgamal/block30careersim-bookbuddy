@@ -36,7 +36,7 @@ function Register ({ setToken }) {
       setSuccessMsg(json.message)
       console.log(successMsg)
 
-      if(successMsg === successMessage){
+      if(json.message === successMessage){
         navigate('/account')
         // register function works. But somehow I have to click the sign up button two times to redirect into account page
       }
