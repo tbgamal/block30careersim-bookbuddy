@@ -41,7 +41,7 @@ function Login ( {token, setToken} ) {
 
   return (
     <div className="form-container">
-    <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>Email:
           <input  value={email} onChange={(e)=>setEmail(e.target.value)}/>
         </label>
@@ -53,8 +53,8 @@ function Login ( {token, setToken} ) {
       </form>
       <div className="link"><Link to="/register">Create an account here</Link></div>
 
-      <h3 className="error-message">{errorMsg}</h3>
-      </div>
+      <div className="error-message">{errorMsg}</div>
+    </div>
   )}
 
 

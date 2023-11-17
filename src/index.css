@@ -127,3 +127,8 @@ label {
   margin-top: 50px;
   width: 50%;
 }
+
+.error-message {
+  color: red;
+  margin: 50px;
+}

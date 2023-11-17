@@ -38,10 +38,11 @@ function Register ({ setToken }) {
 
       if(json.message === successMessage){
         navigate('/account')
-        // register function works. But somehow I have to click the sign up button two times to redirect into account page
       }
       else {
-        // setErrorMsg("Registration failed")
+        setErrorMsg(
+          "Registration failed. Please make sure you have included your email, or you have included your password, or the email is not yet registered"
+          )
       }
   
       setToken(json.token)
@@ -69,6 +70,8 @@ function Register ({ setToken }) {
         </label>
         <button>Sign Up</button>
       </form>
+
+      <div className="error-message">{errorMsg}</div>
     </div>
   )
   }
