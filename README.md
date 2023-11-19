@@ -1,8 +1,5 @@
 # Block 30 - Book Buddy
 
-## Introduction
+a repository for my Block30 Book Buddy careersim which focused on building a website with React JS. 
 
-We are working with a new client who is wanting to design an online library for the public. Another Full Stack Solutions team has already built out the API, but we need your assistance in developing the front end to ensure on-time delivery to the client. When this is complete, please submit the link to the deployed application so I can share it with the client.
-
-Details on the API can be found 🔗 [here](#)
-
+In this repository, you can find codes to a website called Book Buddy, a book library website where user can view list of books fetched from a provided API, see details of each single book, sign up as an authorized member, login as an authorized member of the site, and renting/returning books for authorized member.
